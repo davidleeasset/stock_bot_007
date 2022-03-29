@@ -1,4 +1,2 @@
-gunicorn
-django-heroku
-discord
+discord==1.7.3
 APScheduler==3.9.1
