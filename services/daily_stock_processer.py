@@ -26,8 +26,8 @@ class DailyStockProcessor:
             }
             trade_vol = stock_data["tradeValue"]/100000
             plus_str = "+" if stock_data['changePercent'] > 0 else ""
-            base_msg = f"{stock_data['name']} {stock_data['symbol']} " \
-                       f"價格 ${stock_data['closePrice']} 趴數 {plus_str}{stock_data['changePercent']}% " \
+            base_msg = f"**{stock_data['name']}** {stock_data['symbol']} " \
+                       f"價格 **${stock_data['closePrice']}** 趴數 **{plus_str}{stock_data['changePercent']}%** " \
                        f"成交量 {trade_vol:.2f} 億"
             if daily_watch_data and daily_watch_data["date"] == stock_data["date"]:
                 last_close = daily_watch_data["close"]
@@ -46,7 +46,7 @@ class DailyStockProcessor:
                 elif 100 * abs(last_close - stock_data["closePrice"]) / last_close > 1:
                     DiscordWebhook.send_message(
                         DiscordWebhookChannels.watch_hook,
-                        message=f"價格變動! {base_msg}"
+                        message=f"價格變動 前次({last_close})! {base_msg}"
                     )
                     self.mongo.update_watch(stock_data["symbol"], data=current_watch_data)
             else:

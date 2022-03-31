@@ -9,6 +9,7 @@ class MongoDBCollections:
     daily = client.stock_007.daily
     daily_money_flow = client.stock_007.daily_money_flow
     watch_list = client.stock_007.watch_list
+    public_news = client.stock_007.public_news
 
     def update_daily(self, date, symbol, data):
         self.daily.update_one(
@@ -47,3 +48,15 @@ class MongoDBCollections:
             True
         )
         print(f"{symbol} watch updated!")
+
+    def get_public_news(self, symbol, key):
+        return list(self.public_news.find({"symbol": symbol, "key": key}))
+
+    def create_public_news(self, symbol, key, content):
+        return self.public_news.update_one(
+            {"symbol": symbol, "key": key},
+            {"$set": {
+                "content": content
+            }},
+            True
+        )
