@@ -37,6 +37,20 @@ class MongoDBCollections:
         """
         return {watch["symbol"]: watch for watch in self.watch_list.find()}
 
+    def add_watch(self, symbol):
+        self.watch_list.update_one(
+            {
+                "symbol": symbol
+            },
+            {"$set": {"symbol": symbol}},
+            True
+        )
+        print(f"{symbol} watch added!")
+
+    def del_watch(self, symbol):
+        self.watch_list.remove({"symbol": symbol})
+        print(f"{symbol} watch removed!")
+
     def update_watch(self, symbol, data):
         self.watch_list.update_one(
             {

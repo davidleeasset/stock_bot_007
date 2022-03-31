@@ -13,18 +13,6 @@ class PublicNewsFetcher:
 
     def fetch_news(self):
         for symbol in self.watch_dict.keys():
-            for news_to_feed in self.mops_client.get_public_news(symbol):
-                DiscordWebhook.send_message(
-                    DiscordWebhookChannels.public_news_hook,
-                    message=f"公開資訊觀測站發布",
-                    embeds=[
-                        {
-                            "title": f"**{symbol}**",
-                            "description": news_to_feed,
-                            "color": 5814783
-                        }
-                    ]
-                )
             for new_from_cnyes in self.cnyes_client.get_news(symbol):
                 DiscordWebhook.send_message(
                     DiscordWebhookChannels.news_hook,
@@ -38,3 +26,15 @@ class PublicNewsFetcher:
                         }
                     ]
                 )
+            # for news_to_feed in self.mops_client.get_public_news(symbol):
+            #     DiscordWebhook.send_message(
+            #         DiscordWebhookChannels.public_news_hook,
+            #         message=f"公開資訊觀測站發布",
+            #         embeds=[
+            #             {
+            #                 "title": f"**{symbol}**",
+            #                 "description": news_to_feed,
+            #                 "color": 5814783
+            #             }
+            #         ]
+            #     )
