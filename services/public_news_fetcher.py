@@ -28,10 +28,10 @@ class PublicNewsFetcher:
             for new_from_cnyes in self.cnyes_client.get_news(symbol):
                 DiscordWebhook.send_message(
                     DiscordWebhookChannels.news_hook,
-                    message=new_from_cnyes["title"],
+                    message=f"關鍵字: {symbol}",
                     embeds=[
                         {
-                            "title": f"**{symbol}** {new_from_cnyes['title']}",
+                            "title": f"{new_from_cnyes['title']}",
                             "description": new_from_cnyes["summary"],
                             "url": new_from_cnyes["link"],
                             "color": 5814783
