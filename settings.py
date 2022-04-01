@@ -10,3 +10,13 @@ PUBLIC_NEWS_HOOK = "https://discordapp.com/api/webhooks/958915830610010202/" \
                    "uGTC03E_5AYhmm3f_4TrmJlcocmSopPDFZm326TfvXaYPph2BAdoggmP1aJILCAB2R2A"
 NEWS_HOOK = "https://discordapp.com/api/webhooks/958961716690042950/" \
             "4wXzdbAUAgnYnwZFVfZP0lPr2ABc_PLxtxMmrlqxP4heWp9_Nb6P60W8CsxCNqKYB3uc"
+
+import sentry_sdk
+sentry_sdk.init(
+    "https://d6674499cc0a4096823f58098d419a32@o1183667.ingest.sentry.io/6300999",
+
+    # Set traces_sample_rate to 1.0 to capture 100%
+    # of transactions for performance monitoring.
+    # We recommend adjusting this value in production.
+    traces_sample_rate=1.0
+)

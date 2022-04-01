@@ -13,7 +13,8 @@ class PublicNewsFetcher:
 
     def fetch_news(self):
         for symbol in self.watch_dict.keys():
-            for new_from_cnyes in self.cnyes_client.get_news(symbol):
+            print(f"fetching {symbol} news")
+            for new_from_cnyes in self.cnyes_client.get_news(symbol) or []:
                 DiscordWebhook.send_message(
                     DiscordWebhookChannels.news_hook,
                     message=f"關鍵字: {symbol}",

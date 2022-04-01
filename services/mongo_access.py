@@ -10,6 +10,8 @@ class MongoDBCollections:
     daily_money_flow = client.stock_007.daily_money_flow
     watch_list = client.stock_007.watch_list
     public_news = client.stock_007.public_news
+    money_flow_group = client.stock_007.money_flow_group
+    income = client.stock_007.income
 
     def update_daily(self, date, symbol, data):
         self.daily.update_one(
@@ -72,5 +74,12 @@ class MongoDBCollections:
             {"$set": {
                 "content": content
             }},
+            True
+        )
+
+    def insert_income(self, symbol, date_key, data):
+        self.income.update_one(
+            {"symbol": symbol, "date_key": date_key},
+            {"$set": data},
             True
         )
