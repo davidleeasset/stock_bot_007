@@ -1,19 +1,16 @@
-MONGODB_URL = "mongodb+srv://littlestock:vghkvgvkhvkhgv@cluster0.zfscp.mongodb.net/admin?retryWrites=true&w=majority"
+MONGODB_URL = "--"
 
-DC_BOT_TOKEN = 'OTUwNTYxMzQ1OTA3MDY0ODky.YiatPQ.YHqmm_gEQJU7hFcQ6aanU1Rjdlo'
-DC_BOT_CONTROL_CHANNEL_IDS = [958981693283389441]
-DC_BOT_CONTROL_ROLE_IDS = [958284579360350248]
+DC_BOT_TOKEN = '--'
+DC_BOT_CONTROL_CHANNEL_IDS = []
+DC_BOT_CONTROL_ROLE_IDS = []
 
-WATCH_HOOK = "https://discordapp.com/api/webhooks/958607409805398086/" \
-             "vmtCscpLfCl_n1kYRr3x8Q9DRUQ4hz5ULz4c5MB93lu1_5xr1m9U_kRaMtQhzPRpXMFj"
-PUBLIC_NEWS_HOOK = "https://discordapp.com/api/webhooks/958915830610010202/" \
-                   "uGTC03E_5AYhmm3f_4TrmJlcocmSopPDFZm326TfvXaYPph2BAdoggmP1aJILCAB2R2A"
-NEWS_HOOK = "https://discordapp.com/api/webhooks/958961716690042950/" \
-            "4wXzdbAUAgnYnwZFVfZP0lPr2ABc_PLxtxMmrlqxP4heWp9_Nb6P60W8CsxCNqKYB3uc"
+WATCH_HOOK = "--"
+PUBLIC_NEWS_HOOK = "--"
+NEWS_HOOK = "--"
 
 import sentry_sdk
 sentry_sdk.init(
-    "https://d6674499cc0a4096823f58098d419a32@o1183667.ingest.sentry.io/6300999",
+    "--",
 
     # Set traces_sample_rate to 1.0 to capture 100%
     # of transactions for performance monitoring.

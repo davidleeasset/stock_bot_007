@@ -83,3 +83,31 @@ class MongoDBCollections:
             {"$set": data},
             True
         )
+
+    def get_group_list(self):
+        return [group["name"] for group in self.money_flow_group.find()]
+
+    def add_or_enable_group(self, name: str, stock_symbol_list: list = None):
+        money_flow_group = self.money_flow_group.find_one({"name": name})
+        exists_stocks = money_flow_group["stcoks"] if money_flow_group else []
+        self.money_flow_group.update_one(
+            {
+                "name": name
+            },
+            {"$set": {
+                "enabled": True,
+                "stocks": list(set(stock_symbol_list or [] + exists_stocks))
+            }},
+            True
+        )
+        print(f"{name} group disabled!")
+
+    def disable_group(self, name):
+        self.money_flow_group.update_one(
+            {
+                "name": name
+            },
+            {"$set": {"enabled": False}},
+            False
+        )
+        print(f"{name} group disabled!")

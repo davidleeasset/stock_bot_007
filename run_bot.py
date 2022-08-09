@@ -12,7 +12,9 @@ async def on_ready():
 
 
 async def process_stock_watching(message):
-    if message.channel.id in DC_BOT_CONTROL_CHANNEL_IDS and message.author.top_role.id in DC_BOT_CONTROL_ROLE_IDS:
+    if message.channel.type.value == 1:  # is private message
+        pass
+    elif message.channel.id in DC_BOT_CONTROL_CHANNEL_IDS and message.author.top_role.id in DC_BOT_CONTROL_ROLE_IDS:
         msg = message.content
         if msg.startswith('--'):
             bot_actions = DCBotActions(message)
