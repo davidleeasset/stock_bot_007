@@ -1,13 +1,33 @@
-# Python: Getting Started
+# The project stock_bot_007 -- just for fun.
 
-A barebones Django app, which can easily be deployed to Heroku.
-
-This application supports the [Getting Started with Python on Heroku](https://devcenter.heroku.com/articles/getting-started-with-python) article - check it out for instructions on how to deploy this app to Heroku and also run it locally.
-
-Alternatively, you can deploy it using this Heroku Button:
-
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
-
-For more information about using Python on Heroku, see these Dev Center articles:
-
-- [Python on Heroku](https://devcenter.heroku.com/categories/python)
+- It’s a side project I thought could help me to beat the stock market.
+- Since the stock market slid really deep, I lost my passion to add new features.
+- The working functionalities:
+    - `DailyStockProcessor`
+        - Fetch stock trading information from Fugle API.
+        - Parse the price and save it into MongoDB.
+        - There is a watch list, while processing on the specific stock, check the price movement and notify by the Discord API -`DiscordWebhook`.
+    - `PublicNewsFetcher`
+        - A Web crawler to crawl news for the specific stock news from cnyes.com and mops.twse.com.tw.
+    - `DCBotActions`
+        - The interactive interface uses the Discord bot to control the stock watch list.
+- The process trigger point:
+    - clock.py
+        - There are multiple cron tasks set on `DailyStockProcessor` because the market is moving fast while the opening and closing, so I put a couple of different intervals for the task.
+    - run_bot.py
+        - The interface of discord_bot
+- This is a small project, so —
+    - Considering the trade-off, I choose the easiest way to run all the services.
+        - trade-offs:
+            - If the service is down, it’s fine.
+            - I don’t want to spend too much time maintaining the deployment code.
+            - I have sentry to notify me if some exception is happening.
+- Technical / Production insight:
+    - organized folder structure
+        - Runners, vendors, and services are in their own place, would be easy to find them.
+    - functionalities are layered:
+        - For example the ****daily_stock_processer.py****
+            - The main logic is still simple but already separate to `run` / `process_list` / `single_stock_check` and all the vendors like `venders.dc_webhook` and `venders.fugle`.
+            - I thought it’s good enough for a side-project which just made for fun 🙂
+    - centralized settings:
+        - Easy to maintain like the real environment.
