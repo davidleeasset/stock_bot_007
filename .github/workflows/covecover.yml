@@ -17,8 +17,7 @@ jobs:
     - run: pip install -r requirements.txt
 
     - name: make test-coverage
-      run: pytest --cov services/
-    - run: coverage lcov
+      run: pytest --cov --cov-report lcov:coverage.lcov services/
 
     - name: Coveralls
       uses: coverallsapp/github-action@master
