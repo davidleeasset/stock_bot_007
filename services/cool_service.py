@@ -3,7 +3,7 @@ class Cool:
         self.aaa = 1
         
     def a(self):
-        print(self.aaa)
+        return self.aaa
         
     @staticmethod
     def b():
