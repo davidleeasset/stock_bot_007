@@ -1,4 +1,4 @@
-# The project stock_bot_007 -- just for fun.
+# The project stock_bot_007 -- just for fun. test
 
 - It’s a side project I thought could help me to beat the stock market.
 - Since the stock market slid really deep, I lost my passion to add new features.
