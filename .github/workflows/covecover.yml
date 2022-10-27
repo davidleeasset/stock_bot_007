@@ -8,8 +8,8 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-    - name: Use Python 3.9
     - uses: actions/checkout@v3
+    - name: Use Python 3.9
     - uses: actions/setup-python@v4
       with:
         python-version: '3.9'
