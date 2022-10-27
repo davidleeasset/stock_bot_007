@@ -18,6 +18,7 @@ jobs:
 
     - name: make test-coverage
       run: pytest --cov services/
+    - run: coverage lcov
 
     - name: Coveralls
       uses: coverallsapp/github-action@master
